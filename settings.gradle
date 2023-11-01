@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "where-to-go"
 include ':app'
+include ':core:presentation'
+include ':core:navigation'
