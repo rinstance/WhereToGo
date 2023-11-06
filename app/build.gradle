@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -22,23 +24,49 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.1'
+        kotlinCompilerVersion '1.6.21'
+    }
+
+    kapt {
+        correctErrorTypes true
     }
 }
 
 dependencies {
     implementation Kotlin.kotlinCore
+
     implementation Google.material
+
     implementation Android.appCompat
     implementation Android.constraintLayout
+
     implementation Compose.composeActivity
     implementation Compose.composeMaterial
     implementation Compose.composeUi
     implementation Compose.composeUiToolingPreview
     implementation Compose.navigation
+
+    implementation Dagger.hilt
+    kapt Dagger.hiltKapt
+
+    implementation project(':feature:auth:api')
+    implementation project(':feature:auth:presentation')
+    implementation project(':core:feature_api')
+    implementation project(':core:navigation')
 }

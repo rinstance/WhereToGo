@@ -16,3 +16,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "where-to-go"
 include ':app'
+include ':feature:auth:presentation'
+include ':feature:auth:api'
+include ':core:navigation'
+include ':core:feature_api'

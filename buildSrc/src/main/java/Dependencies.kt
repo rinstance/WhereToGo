@@ -19,3 +19,8 @@ object Compose {
     const val composeMaterial = "androidx.compose.material:material:${Versions.composeMaterial}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
 }
+
+object Dagger {
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
+    const val hiltKapt = "com.google.dagger:hilt-compiler:${Versions.hiltKapt}"
+}
