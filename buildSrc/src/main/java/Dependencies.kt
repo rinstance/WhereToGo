@@ -14,8 +14,8 @@ object Android {
 object Compose {
     const val composeActivity = "androidx.activity:activity-compose:${Versions.composeActivity}"
     const val composeUi = "androidx.compose.ui:ui:${Versions.composeUi}"
-    const val composeUiToolingPreview =
-        "androidx.compose.ui:ui-tooling-preview:${Versions.composeUi}"
+    const val composeUiTooling = "androidx.compose.ui:ui-tooling:${Versions.composeTooling}"
+    const val composeUiToolingPreview = "androidx.compose.ui:ui-tooling-preview:${Versions.composeToolingPreview}"
     const val composeMaterial = "androidx.compose.material:material:${Versions.composeMaterial}"
     const val navigation = "androidx.navigation:navigation-compose:${Versions.composeNavigation}"
 }

@@ -12,6 +12,8 @@ object Versions {
 
     //region compose
     const val composeUi = "1.3.3"
+    const val composeTooling = "1.5.2"
+    const val composeToolingPreview = "1.5.2"
     const val composeActivity = "1.6.1"
     const val composeMaterial = "1.3.1"
     const val composeNavigation = "2.6.0-alpha05"

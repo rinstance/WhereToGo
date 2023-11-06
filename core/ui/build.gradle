@@ -53,4 +53,6 @@ dependencies {
     implementation Compose.composeUi
     implementation Compose.composeUiToolingPreview
     implementation Compose.navigation
+
+    implementation project(':core:utils')
 }

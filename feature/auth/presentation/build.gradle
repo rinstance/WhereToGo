@@ -51,6 +51,7 @@ dependencies {
     implementation Compose.composeActivity
     implementation Compose.composeMaterial
     implementation Compose.composeUi
+    debugImplementation Compose.composeUiTooling
     implementation Compose.composeUiToolingPreview
     implementation Compose.navigation
 
@@ -60,4 +61,6 @@ dependencies {
     implementation project(':feature:auth:api')
     implementation project(':core:feature_api')
     implementation project(':core:navigation')
+    implementation project(':core:ui')
+    implementation project(':core:utils')
 }

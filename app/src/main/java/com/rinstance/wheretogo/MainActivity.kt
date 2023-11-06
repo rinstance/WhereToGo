@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
     lateinit var authDestination: AuthGraphDestinations
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
+
         setContent {
             MaterialTheme {
                 MainScreen()
