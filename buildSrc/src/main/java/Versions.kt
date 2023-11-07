@@ -22,5 +22,6 @@ object Versions {
     //region dagger
     const val hilt = "2.44"
     const val hiltKapt = "2.44"
+    const val hiltCompose = "1.0.0"
     //endregion
 }

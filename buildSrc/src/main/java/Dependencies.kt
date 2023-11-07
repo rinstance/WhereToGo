@@ -23,4 +23,5 @@ object Compose {
 object Dagger {
     const val hilt = "com.google.dagger:hilt-android:${Versions.hilt}"
     const val hiltKapt = "com.google.dagger:hilt-compiler:${Versions.hiltKapt}"
+    const val hiltCompose = "androidx.hilt:hilt-navigation-compose:${Versions.hiltCompose}"
 }
