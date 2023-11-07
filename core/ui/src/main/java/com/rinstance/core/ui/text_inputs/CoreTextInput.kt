@@ -1,7 +1,6 @@
 package com.rinstance.core.ui.text_inputs
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -21,7 +20,7 @@ import com.rinstance.core.utils.actions.ParamAction
 fun CoreTextInput(
     stateValue: MutableState<String>? = null,
     defValue: String = "",
-    placeholder: DefComposableAction = { InputPlaceHolder() },
+    placeholder: DefComposableAction = { CorePlaceholder() },
     onValueChange: ParamAction<String>? = null
 ) {
     val text = stateValue ?: rememberSaveable { mutableStateOf(defValue) }
@@ -42,13 +41,5 @@ fun CoreTextInput(
             focusedIndicatorColor = Color.Black,
             cursorColor =Color.Black
         )
-    )
-}
-
-@Composable
-fun InputPlaceHolder(text: String = "") {
-    Text(
-        text = text,
-        color = colorResource(R.color.color_placeholder)
     )
 }

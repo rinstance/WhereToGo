@@ -23,8 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rinstance.core.ui.buttons.CoreButton
+import com.rinstance.core.ui.text_inputs.CorePlaceholder
 import com.rinstance.core.ui.text_inputs.CoreTextInput
-import com.rinstance.core.ui.text_inputs.InputPlaceHolder
 import com.rinstance.core.utils.actions.DefAction
 import com.rinstance.feature.auth.presentation.R
 import com.rinstance.feature.auth.presentation.ui.login.LoginEvents.ToHomeScreen
@@ -57,7 +57,7 @@ internal fun LoginScreen() {
             LoginButton { viewModel.handleEvent(ToHomeScreen) }
             Spacer(Modifier.height(24.dp))
             NotRegisterText(
-                Modifier
+                modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .clickable { viewModel.handleEvent(ToRegisterScreen) }
             )
@@ -86,7 +86,7 @@ fun LoginButton(onClick: DefAction) {
 fun PhoneInput(phoneState: MutableState<String>) {
     CoreTextInput(
         stateValue = phoneState,
-        placeholder = { InputPlaceHolder(text = stringResource(R.string.login_placeholder)) }
+        placeholder = { CorePlaceholder(text = stringResource(R.string.login_placeholder)) }
     )
 }
 
@@ -94,7 +94,7 @@ fun PhoneInput(phoneState: MutableState<String>) {
 fun PasswordInput(passwordState: MutableState<String>) {
     CoreTextInput(
         stateValue = passwordState,
-        placeholder = { InputPlaceHolder(text = stringResource(R.string.password_placeholder)) }
+        placeholder = { CorePlaceholder(text = stringResource(R.string.password_placeholder)) }
     )
 }
 
