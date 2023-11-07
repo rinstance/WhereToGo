@@ -6,6 +6,6 @@ interface Navigator {
 
     val event: StateFlow<NavigationEvent?>
 
-    fun navigateTo(event: NavigationEvent)
+    fun navigateTo(destination: Destination)
 
 }

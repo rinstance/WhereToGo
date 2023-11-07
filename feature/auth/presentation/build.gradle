@@ -56,6 +56,7 @@ dependencies {
     implementation Compose.navigation
 
     implementation Dagger.hilt
+    implementation Dagger.hiltCompose
     kapt Dagger.hiltKapt
 
     implementation project(':feature:auth:api')

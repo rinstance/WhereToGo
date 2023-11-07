@@ -1,6 +1,7 @@
 package com.rinstance.feature.auth.presentation.ui.login
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -19,14 +21,20 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.rinstance.core.ui.buttons.CoreButton
 import com.rinstance.core.ui.text_inputs.CoreTextInput
 import com.rinstance.core.ui.text_inputs.InputPlaceHolder
+import com.rinstance.core.utils.actions.DefAction
 import com.rinstance.feature.auth.presentation.R
+import com.rinstance.feature.auth.presentation.ui.login.LoginEvents.ToHomeScreen
+import com.rinstance.feature.auth.presentation.ui.login.LoginEvents.ToRegisterScreen
 
 @Preview(device = Devices.PIXEL_2)
 @Composable
 internal fun LoginScreen() {
+    val viewModel = hiltViewModel<LoginViewModel>()
+
     Box(
         modifier = Modifier
             .background(MaterialTheme.colors.onPrimary) // may remove?
@@ -42,13 +50,17 @@ internal fun LoginScreen() {
                 .navigationBarsPadding()
         ) {
             Spacer(Modifier.height(16.dp))
-            PhoneInput()
+            PhoneInput(viewModel.phoneState)
             Spacer(Modifier.height(4.dp))
-            PasswordInput()
+            PasswordInput(viewModel.passwordState)
             Spacer(Modifier.height(20.dp))
-            LoginButton()
+            LoginButton { viewModel.handleEvent(ToHomeScreen) }
             Spacer(Modifier.height(24.dp))
-            NotRegisterText(Modifier.align(Alignment.CenterHorizontally))
+            NotRegisterText(
+                Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .clickable { viewModel.handleEvent(ToRegisterScreen) }
+            )
         }
     }
 }
@@ -63,21 +75,25 @@ fun NotRegisterText(modifier: Modifier) {
 }
 
 @Composable
-fun LoginButton() {
-    CoreButton(text = stringResource(R.string.login_button)) {
-    }
+fun LoginButton(onClick: DefAction) {
+    CoreButton(
+        text = stringResource(R.string.login_button),
+        onClick = onClick
+    )
 }
 
 @Composable
-fun PhoneInput() {
+fun PhoneInput(phoneState: MutableState<String>) {
     CoreTextInput(
+        stateValue = phoneState,
         placeholder = { InputPlaceHolder(text = stringResource(R.string.login_placeholder)) }
     )
 }
 
 @Composable
-fun PasswordInput() {
+fun PasswordInput(passwordState: MutableState<String>) {
     CoreTextInput(
+        stateValue = passwordState,
         placeholder = { InputPlaceHolder(text = stringResource(R.string.password_placeholder)) }
     )
 }

@@ -1,5 +1,7 @@
 package com.rinstance.wheretogo.navigation
 
+import com.rinstance.core.navigation.Destination
+import com.rinstance.core.navigation.NavigateTo
 import com.rinstance.core.navigation.NavigationEvent
 import com.rinstance.core.navigation.Navigator
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,8 +16,8 @@ class NavigatorImpl @Inject constructor() : Navigator {
     private val _event = MutableStateFlow<NavigationEvent?>(null)
     override val event: StateFlow<NavigationEvent?> = _event.asStateFlow()
 
-    override fun navigateTo(event: NavigationEvent) {
-        _event.tryEmit(event)
+    override fun navigateTo(destination: Destination) {
+        _event.tryEmit(NavigateTo(destination))
     }
 
 }
