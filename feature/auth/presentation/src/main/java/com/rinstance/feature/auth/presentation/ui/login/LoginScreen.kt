@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -23,8 +22,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.rinstance.core.ui.buttons.CoreButton
-import com.rinstance.core.ui.text_inputs.CorePlaceholder
-import com.rinstance.core.ui.text_inputs.CoreTextInput
+import com.rinstance.core.ui.text_inputs.PasswordTextInput
+import com.rinstance.core.ui.text_inputs.PhoneTextInput
 import com.rinstance.core.utils.actions.DefAction
 import com.rinstance.feature.auth.presentation.R
 import com.rinstance.feature.auth.presentation.ui.login.LoginEvents.ToHomeScreen
@@ -50,9 +49,9 @@ internal fun LoginScreen() {
                 .navigationBarsPadding()
         ) {
             Spacer(Modifier.height(16.dp))
-            PhoneInput(viewModel.phoneState)
+            PhoneTextInput(viewModel.phoneState)
             Spacer(Modifier.height(4.dp))
-            PasswordInput(viewModel.passwordState)
+            PasswordTextInput(viewModel.passwordState)
             Spacer(Modifier.height(20.dp))
             LoginButton { viewModel.handleEvent(ToHomeScreen) }
             Spacer(Modifier.height(24.dp))
@@ -79,22 +78,6 @@ fun LoginButton(onClick: DefAction) {
     CoreButton(
         text = stringResource(R.string.login_button),
         onClick = onClick
-    )
-}
-
-@Composable
-fun PhoneInput(phoneState: MutableState<String>) {
-    CoreTextInput(
-        stateValue = phoneState,
-        placeholder = { CorePlaceholder(text = stringResource(R.string.login_placeholder)) }
-    )
-}
-
-@Composable
-fun PasswordInput(passwordState: MutableState<String>) {
-    CoreTextInput(
-        stateValue = passwordState,
-        placeholder = { CorePlaceholder(text = stringResource(R.string.password_placeholder)) }
     )
 }
 

@@ -20,26 +20,31 @@ import com.rinstance.core.utils.actions.ParamAction
 fun CoreTextInput(
     stateValue: MutableState<String>? = null,
     defValue: String = "",
+    trailingIcon: DefComposableAction? = null,
     placeholder: DefComposableAction = { CorePlaceholder() },
     onValueChange: ParamAction<String>? = null
 ) {
     val text = stateValue ?: rememberSaveable { mutableStateOf(defValue) }
 
     TextField(
+        modifier = Modifier.fillMaxWidth(),
         value = text.value,
         maxLines = 1,
         placeholder = placeholder,
-        modifier = Modifier.fillMaxWidth(),
+        trailingIcon = trailingIcon,
         onValueChange = { value ->
             text.value = value
             onValueChange?.invoke(value)
         },
-        colors = TextFieldDefaults.textFieldColors(
-            backgroundColor = Color.White,
-            textColor = Color.Black,
-            unfocusedIndicatorColor = colorResource(R.color.color_placeholder),
-            focusedIndicatorColor = Color.Black,
-            cursorColor =Color.Black
-        )
+        colors = getInputColors()
     )
 }
+
+@Composable
+fun getInputColors() = TextFieldDefaults.textFieldColors(
+    backgroundColor = Color.White,
+    textColor = Color.Black,
+    unfocusedIndicatorColor = colorResource(R.color.color_placeholder),
+    focusedIndicatorColor = Color.Black,
+    cursorColor = Color.Black
+)
