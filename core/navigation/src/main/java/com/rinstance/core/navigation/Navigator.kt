@@ -8,4 +8,6 @@ interface Navigator {
 
     fun navigateTo(destination: Destination)
 
+    fun moveBack()
+
 }

@@ -3,4 +3,8 @@
     <string name="auth_title">Добро\nпожаловать!</string>
     <string name="login_button">Войти</string>
     <string name="no_register">Нет аккаунта?</string>
+
+    <string name="register_title">Давайте\nначнём!</string>
+    <string name="register_button">Зарегистрироваться</string>
+    <string name="repeat_password_placeholder">Повторите пароль</string>
 </resources>

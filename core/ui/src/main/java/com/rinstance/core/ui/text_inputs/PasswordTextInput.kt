@@ -15,11 +15,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import com.rinstance.core.ui.R
+import com.rinstance.core.utils.actions.DefComposableAction
 
 @Preview
 @Composable
-fun PasswordTextInput(stateValue: MutableState<String>? = null) {
-    val text = stateValue ?: rememberSaveable { mutableStateOf("") }
+fun PasswordTextInput(
+    state: MutableState<String>? = null,
+    placeholder: DefComposableAction = { PasswordPlaceholder() }
+) {
+    val text = state ?: rememberSaveable { mutableStateOf("") }
 
     TextField(
         modifier = Modifier.fillMaxWidth(),
@@ -31,7 +35,7 @@ fun PasswordTextInput(stateValue: MutableState<String>? = null) {
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
         visualTransformation = PasswordVisualTransformation(),
         trailingIcon = { LockIcon() },
-        placeholder = { PasswordPlaceholder() },
+        placeholder = placeholder,
         colors = getInputColors()
     )
 }

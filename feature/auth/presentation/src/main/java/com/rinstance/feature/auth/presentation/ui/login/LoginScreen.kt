@@ -1,6 +1,5 @@
 package com.rinstance.feature.auth.presentation.ui.login
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -36,7 +34,6 @@ internal fun LoginScreen() {
 
     Box(
         modifier = Modifier
-            .background(MaterialTheme.colors.onPrimary) // may remove?
             .fillMaxSize()
             .navigationBarsPadding()
             .padding(32.dp)

@@ -1,8 +1,9 @@
 package com.rinstance.wheretogo.navigation
 
 import com.rinstance.core.navigation.Destination
-import com.rinstance.core.navigation.NavigateTo
 import com.rinstance.core.navigation.NavigationEvent
+import com.rinstance.core.navigation.NavigationEvent.Back
+import com.rinstance.core.navigation.NavigationEvent.NavigateTo
 import com.rinstance.core.navigation.Navigator
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,6 +19,10 @@ class NavigatorImpl @Inject constructor() : Navigator {
 
     override fun navigateTo(destination: Destination) {
         _event.tryEmit(NavigateTo(destination))
+    }
+
+    override fun moveBack() {
+        _event.tryEmit(Back)
     }
 
 }
