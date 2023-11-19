@@ -66,8 +66,8 @@ dependencies {
     implementation Dagger.hiltCompose
     kapt Dagger.hiltKapt
 
-    implementation project(':feature:auth:api')
-    implementation project(':feature:auth:presentation')
-    implementation project(':core:feature_api')
-    implementation project(':core:navigation')
+    implementation project(Modules.authApi)
+    implementation project(Modules.authPresentation)
+    implementation project(Modules.coreFeatureApi)
+    implementation project(Modules.coreNavigation)
 }

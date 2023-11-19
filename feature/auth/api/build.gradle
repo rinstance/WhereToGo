@@ -48,6 +48,6 @@ dependencies {
     implementation Dagger.hilt
     kapt Dagger.hiltKapt
 
-    implementation project(':core:feature_api')
-    implementation project(':core:navigation')
+    implementation project(Modules.coreFeatureApi)
+    implementation project(Modules.coreNavigation)
 }
