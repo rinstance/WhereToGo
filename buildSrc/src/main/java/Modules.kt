@@ -13,5 +13,6 @@ object Modules {
 
     //region home
     const val homeApi = ":feature:home:api"
+    const val homePresentation = ":feature:home:presentation"
     //endregion
 }

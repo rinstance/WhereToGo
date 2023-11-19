@@ -31,4 +31,6 @@ android {
 
 dependencies {
     implementation Kotlin.kotlinCore
+
+    implementation Google.material
 }

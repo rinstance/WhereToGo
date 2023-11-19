@@ -1,21 +1,19 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'com.google.dagger.hilt.android'
 }
 
 android {
-    compileSdk 34
+    namespace 'com.rinstance.home.presentation'
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.rinstance.wheretogo"
-        minSdk 27
-        targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        minSdk 24
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -24,16 +22,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
     buildFeatures {
         compose true
     }
@@ -53,9 +48,6 @@ dependencies {
 
     implementation Google.material
 
-    implementation Android.appCompat
-    implementation Android.constraintLayout
-
     implementation Compose.composeActivity
     implementation Compose.composeMaterial
     implementation Compose.composeUi
@@ -63,12 +55,11 @@ dependencies {
     implementation Compose.navigation
 
     implementation Dagger.hilt
-    implementation Dagger.hiltCompose
     kapt Dagger.hiltKapt
 
-    implementation project(Modules.authApi)
     implementation project(Modules.homeApi)
-    implementation project(Modules.authPresentation)
+    implementation project(Modules.coreUi)
     implementation project(Modules.coreFeatureApi)
     implementation project(Modules.coreNavigation)
+    implementation project(Modules.coreUtils)
 }
