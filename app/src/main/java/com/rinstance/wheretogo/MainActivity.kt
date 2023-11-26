@@ -1,11 +1,17 @@
 package com.rinstance.wheretogo
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.activity.compose.LocalOnBackPressedDispatcherOwner
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
@@ -41,6 +47,8 @@ class MainActivity : AppCompatActivity() {
         val navController = rememberNavController()
         val viewModel = hiltViewModel<MainViewModel>()
 
+        BackPressHandler(viewModel::moveBack)
+
         LaunchedEffect(key1 = true) {
             navigator.event.collect { event ->
                 viewModel.handleNavigation(event, navController)
@@ -52,6 +60,25 @@ class MainActivity : AppCompatActivity() {
             startDestination = authDestination.route,
             builder = graphFactory::setupFeatures
         )
+    }
+
+    @Composable
+    fun BackPressHandler(onBackPressed: () -> Unit) {
+        val currentOnBackPressed = rememberUpdatedState(newValue = onBackPressed)
+        val backPressedDispatcher: OnBackPressedDispatcher? =
+            LocalOnBackPressedDispatcherOwner.current?.onBackPressedDispatcher
+        val backCallback = remember {
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    currentOnBackPressed.value.invoke()
+                }
+            }
+        }
+
+        DisposableEffect(key1 = backPressedDispatcher) {
+            backPressedDispatcher?.addCallback(backCallback)
+            onDispose(backCallback::remove)
+        }
     }
 
 }

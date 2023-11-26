@@ -8,6 +8,8 @@ interface Navigator {
 
     fun navigateTo(destination: Destination)
 
+    fun newRoot(destination: Destination)
+
     fun moveBack()
 
 }

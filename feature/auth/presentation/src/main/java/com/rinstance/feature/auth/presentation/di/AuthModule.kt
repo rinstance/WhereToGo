@@ -17,6 +17,6 @@ internal abstract class AuthModule {
     @Binds
     @IntoMap
     @ClassKey(AuthFeatureEntry::class)
-    abstract fun favoritesGraph(entry: AuthFeatureEntryImpl): FeatureEntry
+    abstract fun authGraph(entry: AuthFeatureEntryImpl): FeatureEntry
 
 }

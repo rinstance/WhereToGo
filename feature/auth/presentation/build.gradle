@@ -59,6 +59,7 @@ dependencies {
     implementation Dagger.hiltCompose
     kapt Dagger.hiltKapt
 
+    implementation project(Modules.homeApi)
     implementation project(Modules.authApi)
     implementation project(Modules.coreUi)
     implementation project(Modules.coreFeatureApi)

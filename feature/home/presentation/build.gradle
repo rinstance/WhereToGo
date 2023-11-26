@@ -51,10 +51,12 @@ dependencies {
     implementation Compose.composeActivity
     implementation Compose.composeMaterial
     implementation Compose.composeUi
+    debugImplementation Compose.composeUiTooling
     implementation Compose.composeUiToolingPreview
     implementation Compose.navigation
 
     implementation Dagger.hilt
+    implementation Dagger.hiltCompose
     kapt Dagger.hiltKapt
 
     implementation project(Modules.homeApi)
