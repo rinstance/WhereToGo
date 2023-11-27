@@ -1,6 +1,8 @@
 package com.rinstance.wheretogo.di
 
+import com.rinstance.core.navigation.NavigationHandler
 import com.rinstance.core.navigation.Navigator
+import com.rinstance.wheretogo.navigation.MainNavigationHandler
 import com.rinstance.wheretogo.navigation.NavigatorImpl
 import dagger.Binds
 import dagger.Module
@@ -12,6 +14,9 @@ import dagger.hilt.components.SingletonComponent
 abstract class AppModule {
 
     @Binds
-    abstract fun favoritesGraph(impl: NavigatorImpl): Navigator
+    abstract fun bindNavigation(impl: NavigatorImpl): Navigator
+
+    @Binds
+    abstract fun bindNavigationHandler(impl: MainNavigationHandler): NavigationHandler
 
 }

@@ -16,6 +16,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.rinstance.core.feature_api.ui.GraphFactory
+import com.rinstance.core.navigation.NavigationHandler
 import com.rinstance.core.navigation.Navigator
 import com.rinstance.feature.auth.api.navigation.destinations.AuthGraphDestinations
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,6 +34,9 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var navigator: Navigator
 
+    @Inject
+    lateinit var navigationHandler: NavigationHandler
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -49,9 +53,9 @@ class MainActivity : AppCompatActivity() {
 
         BackPressHandler(viewModel::moveBack)
 
-        LaunchedEffect(key1 = true) {
+        LaunchedEffect(key1 = Unit) {
             navigator.event.collect { event ->
-                viewModel.handleNavigation(event, navController)
+                navigationHandler.handleNavigation(event, navController, ::finishAffinity)
             }
         }
 

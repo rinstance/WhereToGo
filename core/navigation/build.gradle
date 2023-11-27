@@ -32,5 +32,9 @@ android {
 dependencies {
     implementation Kotlin.kotlinCore
 
+    implementation Compose.navigation
+
     implementation Google.material
+
+    implementation project(Modules.coreUtils)
 }
